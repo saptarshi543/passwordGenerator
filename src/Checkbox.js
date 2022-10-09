@@ -9,9 +9,6 @@ function Checkbox(){
 	const [alphabets, setAlphabets]=React.useState(false);
 	
 
-	const handleSpace=()=>{
-setSpace(!space);
-	}
 
 return(
 <div>
