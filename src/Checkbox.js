@@ -1,5 +1,7 @@
 //import React from "react";
 import * as React from 'react';
+import MakePass from './MakePass';
+
 function Checkbox(){
 	const [max, setMax]=React.useState(0);
 	const [min,setMin]=React.useState(0);
@@ -51,7 +53,12 @@ return(
 	<p> Including Letters? {letters.toString()}</p>
 	<p> Including Alphabets? {alphabets.toString()}</p>
 	
-	<p> Max length: {max} Min length: {min}</p>
+	<p> Max length: {max} Min length: {min} </p>
+	
+
+
+
+	<MakePass max={max} min={min} space={space} num={num} spc_char={special} letters={letters} alphabets={alphabets}/>
 	</div>
 );
 }
