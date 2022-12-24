@@ -6,11 +6,10 @@ function Checkbox(){
 	const [max, setMax]=React.useState(0);
 	const [min,setMin]=React.useState(0);
 
-	const [space, setSpace]=React.useState(false);
-	const [num, setNum]=React.useState(false);
-	const [special, setSpecial]=React.useState(false);
-	const [letters, setLetters]=React.useState(false);
-	const [alphabets, setAlphabets]=React.useState(false);
+	const [num, setNum]=React.useState(true);
+	const [special, setSpecial]=React.useState(true);
+	const [letters, setLetters]=React.useState(true);
+	const [alphabets, setAlphabets]=React.useState(true);
 	
 
 return(
@@ -30,8 +29,6 @@ return(
 	
 
 	<label>
-	Include Spaces? 
-	<input type="checkbox" space={space} onChange={ ()=>setSpace(!space) }/>
 	<br></br>
 	Include Numbers? 
 	<input type="checkbox" num={num} onChange={()=> setNum(!num)} />
@@ -47,7 +44,6 @@ return(
 
 	</label>
 
-	<p> Including Space? {space.toString()}</p>
 	<p> Including Numbers? {num.toString()}</p>
 	<p> Including Special Characters? {special.toString()}</p>
 	<p> Including Letters? {letters.toString()}</p>
@@ -58,7 +54,7 @@ return(
 
 
 
-	<TakeInput max={max} min={min} space={space} num={num} spc_char={special} letters={letters} alphabets={alphabets}/>
+	<TakeInput max={max} min={min}  num={num} spc_char={special} letters={letters} alphabets={alphabets}/>
 	</div>
 );
 }
