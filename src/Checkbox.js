@@ -1,6 +1,6 @@
 //import React from "react";
 import * as React from 'react';
-import MakePass from './MakePass';
+import TakeInput from './TakeInput.js';
 
 function Checkbox(){
 	const [max, setMax]=React.useState(0);
@@ -58,7 +58,7 @@ return(
 
 
 
-	<MakePass max={max} min={min} space={space} num={num} spc_char={special} letters={letters} alphabets={alphabets}/>
+	<TakeInput max={max} min={min} space={space} num={num} spc_char={special} letters={letters} alphabets={alphabets}/>
 	</div>
 );
 }

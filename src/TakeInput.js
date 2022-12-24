@@ -1,5 +1,9 @@
 import React from "react";
-function make_pswd(max, min,spaceObj, numObj, specialObj, lettersObj, alphabetsObj){
+
+	var final_length=0;//working...
+	var suggestion="";
+function validateFinalArray(max, min,spaceObj, numObj, specialObj, lettersObj, alphabetsObj){
+	var i;
 	var number=['1','2','3','4','5','6','7','8','9','0'];
 	var special_char=['!','@','#','$','%','&','*'];
 	var space=[' '];
@@ -9,11 +13,10 @@ function make_pswd(max, min,spaceObj, numObj, specialObj, lettersObj, alphabetsO
 
 
 
-	var final_length=0;//working...
 	if (max==min) {final_length=max;}
 	else{
 	 final_length=random(max, min);}
-//	console.log("test for len:"+final_length);
+	console.log("test for len:"+final_length);
 	
 	let numbersUser=Boolean(numObj);
 	let specialUser=Boolean(specialObj);
@@ -25,42 +28,32 @@ function make_pswd(max, min,spaceObj, numObj, specialObj, lettersObj, alphabetsO
 
 	//adding selection to final_data array
 	if(numbersUser===true){
-		console.log("num is true");
-	for(var i=0; i< number.length; i++){
-		console.log("num"+number[i]);
+	for( i=0; i< number.length; i++){
 		final_data.push(number[i]);
-		//console.log(final_data[i]);
 		}
 	}
-	if(specialUser==true){
-	for(var i=0; i< special_char.length; i++){
-		console.log(special_char[i]);
+	if(specialUser===true){
+	for(i=0; i< special_char.length; i++){
 		final_data.push(special_char[i]);
-		//console.log(final_data[i]);
 		}
 	}
-	if(lettersUser==true){
-	for(var i=0; i< letter.length; i++){
-		console.log("letter"+letter[i]);
+	if(lettersUser===true){
+	for(i=0; i< letter.length; i++){
 		final_data.push(letter[i]);
-		//console.log(final_data[i]);
 		}
 	}
-	if(alphabetsUser==true){
-	for(var i=0; i< alpha.length; i++){
-		console.log("alpha"+alpha[i]);
+	if(alphabetsUser===true){
+	for(i=0; i< alpha.length; i++){
 		final_data.push(alpha[i]);
-		//console.log(final_data[i]);
 		}
 	}
-	if(spaceUser==true)
+	if(spaceUser===true)
 		final_data.push(space[0]);
 
-	//checking final array
-	//for(var i=0; i< final_data.length; i++){
-	//	console.log(i+"---"+final_data[i]);
-	//}
-console.log("final>>"+final_data);
+//console.log("final>>"+final_data);
+	//passing...
+	makePswd(final_data, final_length);
+
 }
 
 
@@ -68,7 +61,36 @@ function random( max,min){//this function is working...
 	min=Math.ceil(min);max=Math.floor(max);
 	return Math.floor(Math.random()*(max-min)+min);
 	}
-function MakePass(props){
+
+
+function makePswd(data, len){
+	console.log("from makePsw");
+	console.log(data+" >> "+len);
+	console.log("exiting makePswd");
+	var j;
+	for(j=0; j<len; j++){
+		suggestion+= data[random(0, data.length-1)];
+	}
+	console.log(suggestion+" >> " + j);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function TakeInput(props){
 	
 	function make(){
 	var len_of_pass=random(props.max, props.min);
@@ -77,7 +99,7 @@ function MakePass(props){
 return(
 <div>
 
-<p>test for makePass</p>
+<p>test for TakeInput</p>
 <p>Max length: {props.max} Min length: {props.min}</p>
 
 
@@ -88,9 +110,11 @@ return(
 	<p> Including Letters? {props.letters.toString()}</p>
 	<p> Including Alphabets? {props.alphabets.toString()}</p>
 	
-<button type="button" onChange={make_pswd(props.max, props.min, props.space, props.num, props.spc_char, props.letters, props.alphabets)}> TEst</button>
+<button type="button" onChange={validateFinalArray(props.max, props.min, props.space, props.num, props.spc_char, props.letters, props.alphabets)}> TEst</button>
+
+	<p>Suggestion: {suggestion.toString()}</p>
 	</div>
 );
 }
 
-export default MakePass;
+export default TakeInput;

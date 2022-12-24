@@ -4,7 +4,6 @@ function App() {
   return (
 <div>
 	
-  <p>test</p>
 <Checkbox />
   
 </div>
