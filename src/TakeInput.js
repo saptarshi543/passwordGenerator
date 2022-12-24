@@ -30,6 +30,7 @@ function validateFinalArray(max, min,numObj, specialObj, lettersObj, alphabetsOb
 
 	//adding selection to final_data array
 	if(numbersUser===true){
+		console.log("num");
 	for( i=0; i< number.length; i++){
 		final_data.push(number[i]);
 		}
@@ -64,14 +65,15 @@ function random( max,min){//this function is working...
 
 
 function makePswd(data, len){
-	console.log("from makePsw");
-	console.log(data+" >> "+len);
-	console.log("exiting makePswd");
+	//console.log("from makePsw");
+	//console.log(data+" >> "+len);
+	//console.log("exiting makePswd");
 	var j;
+	suggestion="";
 	for(j=0; j<len; j++){
 		suggestion+= data[random(0, data.length-1)].toString();
 	}
-	console.log(suggestion+" >> " + j);
+	//console.log(suggestion+" >> " + j);
 }
 
 

@@ -6,10 +6,10 @@ function Checkbox(){
 	const [max, setMax]=React.useState(0);
 	const [min,setMin]=React.useState(0);
 
-	const [num, setNum]=React.useState(true);
-	const [special, setSpecial]=React.useState(true);
-	const [letters, setLetters]=React.useState(true);
-	const [alphabets, setAlphabets]=React.useState(true);
+	const [num, setNum]=React.useState(false);
+	const [special, setSpecial]=React.useState(false);
+	const [letters, setLetters]=React.useState(false);
+	const [alphabets, setAlphabets]=React.useState(false);
 	
 
 return(
