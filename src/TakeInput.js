@@ -15,7 +15,7 @@ function validateFinalArray(max, min,numObj, specialObj, lettersObj, alphabetsOb
 
 
 
-	if (max==min) {final_length=max;}
+	if (max===min) {final_length=max;}
 	else{
 	 final_length=random(max, min);}
 	console.log("test for len:"+final_length);
@@ -92,10 +92,10 @@ function makePswd(data, len){
 
 function TakeInput(props){
 	
-	function make(){
-	var len_of_pass=random(props.max, props.min);
+	//function make(){
+	//var len_of_pass=random(props.max, props.min);
 		//window.alert(len_of_pass);
-	}
+	//}
 return(
 <div>
 
