@@ -1,5 +1,8 @@
 import React from "react";
-
+function copy(){
+	//window.alert("Copied!!");
+  navigator.clipboard.writeText(suggestion);
+}
 	var final_length=0;//working...
 	var suggestion="";
 function validateFinalArray(max, min,spaceObj, numObj, specialObj, lettersObj, alphabetsObj){
@@ -69,7 +72,7 @@ function makePswd(data, len){
 	console.log("exiting makePswd");
 	var j;
 	for(j=0; j<len; j++){
-		suggestion+= data[random(0, data.length-1)];
+		suggestion+= data[random(0, data.length-1)].toString();
 	}
 	console.log(suggestion+" >> " + j);
 }
@@ -113,6 +116,7 @@ return(
 <button type="button" onChange={validateFinalArray(props.max, props.min, props.space, props.num, props.spc_char, props.letters, props.alphabets)}> TEst</button>
 
 	<p>Suggestion: {suggestion.toString()}</p>
+	<button type="button" onChange={  copy()}>Copy Password</button>
 	</div>
 );
 }
