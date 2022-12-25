@@ -5,20 +5,20 @@ function copy(){
 }
 	var final_length=0;//working...
 	var suggestion="";
-function validateFinalArray(max, min,numObj, specialObj, lettersObj, alphabetsObj){
-	var i;
 	var number=['1','2','3','4','5','6','7','8','9','0'];
 	var special_char=['!','@','#','$','%','&','*'];
 	var letter=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 	var alpha=['A','B', 'C','D','E','F','G','H','I','J','K','L','M','N', 'O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 	var final_data=[];
 
+function validateFinalArray(max, min,numObj, specialObj, lettersObj, alphabetsObj){
+	var i;
 
 
 	if (max===min) {final_length=max;}
 	else{
 	 final_length=random(max, min);}
-	console.log("test for len:"+final_length);
+	//console.log("test for len:"+final_length);
 	
 	let numbersUser=Boolean(numObj);
 	let specialUser=Boolean(specialObj);
@@ -54,8 +54,32 @@ function validateFinalArray(max, min,numObj, specialObj, lettersObj, alphabetsOb
 //console.log("final>>"+final_data);
 	//passing...
 	makePswd(final_data, final_length);
+	checkPswd(suggestion, numbersUser, specialUser, lettersUser, alphabetsUser);
 
 }
+
+function checkPswd(pass, num, spc, letters, alphaBool){//working...
+	//console.log(">>"+pass+"<<\n"+num+typeof(num));
+	var isPresent=false;
+
+	for(var i=0; i<pass.length; i++){
+		//console.log(number+"\n"+special_char+"\n"+letter+"\n"+alpha);
+		var tmp=pass.charAt(i);
+		if(num==true && (tmp in number)){
+			isPresent=true;
+		}
+		if(spc==true && (tmp in special_char)){ isPresent=true;}
+		if(letters==true && (tmp in letter)){isPresent=true;}
+		if(alphaBool==true && (tmp in alpha)){isPresent=true;}
+		console.log(pass+" "+((isPresent)? "OK": "NOt oK"));
+
+	}
+}
+
+
+
+
+
 
 
 function random( max,min){//this function is working...
