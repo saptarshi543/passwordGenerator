@@ -64,13 +64,13 @@ function checkPswd(pass, num, spc, letters, alphaBool){//working...
 
 	for(var i=0; i<pass.length; i++){
 		//console.log(number+"\n"+special_char+"\n"+letter+"\n"+alpha);
-		try{var tmp=pass.charAt(i);
+		var tmp=pass.charAt(i);
 				if(num===true && (tmp in number)){isPresent=true;}
 				if(spc===true && (tmp in special_char)){ isPresent=true;}
 				if(letters===true && (tmp in letter)){isPresent=true;}
 				if(alphaBool===true && (tmp in alpha)){isPresent=true;}
 				console.log(pass+" "+((isPresent)? "OK": "NOt oK"));
-		}catch(err){}
+		
 	}
 }
 
