@@ -53,9 +53,23 @@ function validateFinalArray(max, min,numObj, specialObj, lettersObj, alphabetsOb
 
 //console.log("final>>"+final_data);
 	//passing...
-	makePswd(final_data, final_length);
-	checkPswd(suggestion, numbersUser, specialUser, lettersUser, alphabetsUser);
+	var forCheck=makePswd(final_data, final_length);
+	console.log(forCheck);
+	suggestion=forCheck;
 
+
+	// while(true){//checking if password is according to user's choice..
+	// 	if(checkPswd(forCheck, numbersUser, specialUser, lettersUser, alphabetsUser)){
+	// 		suggestion=forCheck;
+	// 		console.log("BREAK");
+	// 		break;
+	// 	}
+	// 	else{
+	// 		forCheck=makePswd(final_data, final_length);
+	// 	}
+	// }
+	var t=checkPswd(forCheck, numbersUser, specialUser, lettersUser, alphabetsUser);
+console.log("check> "+t);
 }
 
 function checkPswd(pass, num, spc, letters, alphaBool){//working...
@@ -65,13 +79,16 @@ function checkPswd(pass, num, spc, letters, alphaBool){//working...
 	for(var i=0; i<pass.length; i++){
 		//console.log(number+"\n"+special_char+"\n"+letter+"\n"+alpha);
 		var tmp=pass.charAt(i);
-				if(num===true && (tmp in number)){isPresent=true;}
-				if(spc===true && (tmp in special_char)){ isPresent=true;}
-				if(letters===true && (tmp in letter)){isPresent=true;}
-				if(alphaBool===true && (tmp in alpha)){isPresent=true;}
-				console.log(pass+" "+((isPresent)? "OK": "NOt oK"));
+				if(num==true && (tmp in number)){isPresent=true;}
+				if(spc==true && (tmp in special_char)){ isPresent=true;}
+				if(letters==true && (tmp in letter)){isPresent=true;}
+				if(alphaBool==true && (tmp in alpha)){isPresent=true;}
+				
 		
 	}
+	console.log(pass+" "+((isPresent)? "OK": "NOt oK"));
+
+	return isPresent;
 }
 
 
@@ -91,11 +108,12 @@ function makePswd(data, len){
 	//console.log(data+" >> "+len);
 	//console.log("exiting makePswd");
 	var j;
-	suggestion="";
+	var s="";
 	for(j=0; j<len; j++){
-		suggestion+= data[random(0, data.length-1)].toString();
+		s+= data[random(0, data.length-1)].toString();
 	}
-	//console.log(suggestion+" >> " + j);
+	return s;
+	// console.log(suggestion+" >> " + j);
 }
 
 
@@ -136,7 +154,7 @@ return(
 <button type="button" onChange={validateFinalArray(props.max, props.min, props.num, props.spc_char, props.letters, props.alphabets)}> TEst</button>
 
 	<p>Suggestion: **{suggestion.toString()}** </p>
-	<button type="button" onChange={  copy()}>Copy Password</button>
+	<button type="button" onChange={ copy() }>Copy Password</button>
 	</div>
 );
 }
