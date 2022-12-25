@@ -10,23 +10,18 @@ function Checkbox(){
 	const [special, setSpecial]=React.useState(false);
 	const [letters, setLetters]=React.useState(false);
 	const [alphabets, setAlphabets]=React.useState(false);
+
+	//setNum(!num);
+	//setSpecial(!special);
+	//setLetters(!letters);
+	//setAlphabets(!alphabets);
 	
 
 return(
 <div>
 
-	
-		<label>Enter maximum length of password</label>
-		<input type="number" id="MAX" onChange={()=>setMax(parseInt(document.getElementById("MAX").value))} />
-		<br></br>
 
-		<label>Enter minimum length of password</label>
-		<input type="number" id="MIN" onChange={()=>setMin(parseInt(document.getElementById("MIN").value))}/>
-		<br></br>
 
-	<br></br>
-
-	
 
 	<label>
 	<br></br>
@@ -43,6 +38,29 @@ return(
 	<input type="checkbox" alphabets={alphabets} onChange={()=> setAlphabets(!alphabets)} />
 
 	</label>
+
+
+
+	
+	<br></br>
+	<br></br>
+		<label>Enter maximum length of password</label>
+		<input type="number" id="MAX" onChange={()=>setMax(parseInt(document.getElementById("MAX").value))} />
+		<br></br>
+
+	<br></br>
+		<label>Enter minimum length of password</label>
+		<input type="number" id="MIN" onChange={()=>setMin(parseInt(document.getElementById("MIN").value))}/>
+		<br></br>
+
+	<br></br>
+
+	
+
+
+
+
+
 
 	<p> Including Numbers? {num.toString()}</p>
 	<p> Including Special Characters? {special.toString()}</p>
