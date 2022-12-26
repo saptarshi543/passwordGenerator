@@ -1,11 +1,9 @@
-import Checkbox from './Checkbox.js';
+import Checkbox from './Checkbox';
 import React from "react";
 function App() {
   return (
 <div>
-	
-<Checkbox />
-  
+<Checkbox />  
 </div>
   );
 }
