@@ -54,7 +54,7 @@ function validateFinalArray(max, min,numObj, specialObj, lettersObj, alphabetsOb
 //console.log("final>>"+final_data);
 	//passing...
 	var forCheck=makePswd(final_data, final_length);
-	console.log(forCheck);
+	//console.log(forCheck);
 	suggestion=forCheck;
 
 
@@ -72,24 +72,24 @@ function validateFinalArray(max, min,numObj, specialObj, lettersObj, alphabetsOb
 //console.log("check> "+t);
 }
 
-function checkPswd(pass, num, spc, letters, alphaBool){//working...
+//function checkPswd(pass, num, spc, letters, alphaBool){//working...
 	//console.log(">>"+pass+"<<\n"+num+typeof(num));
-	var isPresent=false;
+//	var isPresent=false;
 
-	for(var i=0; i<pass.length; i++){
+//	for(var i=0; i<pass.length; i++){
 		//console.log(number+"\n"+special_char+"\n"+letter+"\n"+alpha);
-		var tmp=pass.charAt(i);
-				if(num===true && (tmp in number)){isPresent=true;}
-				if(spc===true && (tmp in special_char)){ isPresent=true;}
-				if(letters===true && (tmp in letter)){isPresent=true;}
-				if(alphaBool===true && (tmp in alpha)){isPresent=true;}
+	//	var tmp=pass.charAt(i);
+	//			if(num===true && (tmp in number)){isPresent=true;}
+	//			if(spc===true && (tmp in special_char)){ isPresent=true;}
+	//			if(letters===true && (tmp in letter)){isPresent=true;}
+	//			if(alphaBool===true && (tmp in alpha)){isPresent=true;}
 				
 		
-	}
+//	}
 	//console.log(pass+" "+((isPresent)? "OK": "NOt oK"));
 
-	return isPresent;
-}
+//	return isPresent;
+//}
 
 
 
