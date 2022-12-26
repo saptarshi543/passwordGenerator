@@ -69,7 +69,7 @@ function validateFinalArray(max, min,numObj, specialObj, lettersObj, alphabetsOb
 	// 	}
 	// }
 	var t=checkPswd(forCheck, numbersUser, specialUser, lettersUser, alphabetsUser);
-console.log("check> "+t);
+//console.log("check> "+t);
 }
 
 function checkPswd(pass, num, spc, letters, alphaBool){//working...
@@ -86,7 +86,7 @@ function checkPswd(pass, num, spc, letters, alphaBool){//working...
 				
 		
 	}
-	console.log(pass+" "+((isPresent)? "OK": "NOt oK"));
+	//console.log(pass+" "+((isPresent)? "OK": "NOt oK"));
 
 	return isPresent;
 }
