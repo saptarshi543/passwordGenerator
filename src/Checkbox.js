@@ -11,7 +11,6 @@ function Checkbox(){
 	const [letters, setLetters]=React.useState(false);
 	const [alphabets, setAlphabets]=React.useState(false);
 
-const margin={margin:'5px'};	
 const input={
 	margin:'4%',
 	borderRadius:'7px',
