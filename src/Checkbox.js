@@ -11,17 +11,17 @@ function Checkbox(){
 	const [letters, setLetters]=React.useState(false);
 	const [alphabets, setAlphabets]=React.useState(false);
 
-	//setNum(!num);
-	//setSpecial(!special);
-	//setLetters(!letters);
-	//setAlphabets(!alphabets);
-	
-
+const margin={margin:'5px'};	
+const input={
+	margin:'4%',
+	borderRadius:'7px',
+	backgroundColor:'#8C779C'
+}
 return(
 <div>
+<p></p>
 
-
-
+<div style={input}>
 
 	<label>
 	<br></br>
@@ -62,15 +62,10 @@ return(
 
 
 
-	<p> Including Numbers? {num.toString()}</p>
-	<p> Including Special Characters? {special.toString()}</p>
-	<p> Including Letters? {letters.toString()}</p>
-	<p> Including Alphabets? {alphabets.toString()}</p>
-	
-	<p> Max length: {max} Min length: {min} </p>
 	
 
 
+	</div>
 
 	<TakeInput max={max} min={min}  num={num} spc_char={special} letters={letters} alphabets={alphabets}/>
 	</div>

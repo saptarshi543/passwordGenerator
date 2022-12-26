@@ -138,23 +138,46 @@ function TakeInput(props){
 	//var len_of_pass=random(props.max, props.min);
 		//window.alert(len_of_pass);
 	//}
+	
+	const margin={
+		margin:'10px'
+	};
+
+
+
+	const styles={
+		margin:'10px',
+		backgroundColor:'#578FCA',
+		borderRadius:'7px'
+	};
+	const hide={
+		display:'none'
+	};
+	const suggest={
+		margin:'3%',
+		backgroundColor:'#20A167',
+		borderRadius:'7px'
+	}
+
 return(
-<div>
+<div style={styles}>
 
 <p>test for TakeInput</p>
-<p>Max length: {props.max} Min length: {props.min}</p>
+<h2 style={margin}>Max length: {props.max} Min length: {props.min}</h2>
 
 
+<div style={margin}>
+	<h2> Including Numbers? {props.num.toString()}</h2>
+	<h2> Including Special Characters? {props.spc_char.toString()}</h2>
+	<h2> Including Letters? {props.letters.toString()}</h2>
+	<h2> Including Alphabets? {props.alphabets.toString()}</h2>
+<button style={hide} type="button" onChange={validateFinalArray(props.max, props.min, props.num, props.spc_char, props.letters, props.alphabets)}></button>
 
-	<p> Including Numbers? {props.num.toString()}</p>
-	<p> Including Special Characters? {props.spc_char.toString()}</p>
-	<p> Including Letters? {props.letters.toString()}</p>
-	<p> Including Alphabets? {props.alphabets.toString()}</p>
-	
-<button type="button" onChange={validateFinalArray(props.max, props.min, props.num, props.spc_char, props.letters, props.alphabets)}> TEst</button>
+	<h2 style={suggest}>Suggestion: **{suggestion.toString()}** </h2>
+	<button style={hide} type="button" onChange={ copy() }></button>
 
-	<p>Suggestion: **{suggestion.toString()}** </p>
-	<button type="button" onChange={ copy() }>Copy Password</button>
+	<h2 style={suggest}>Suggestion is already copied to your clipboard!!</h2>
+</div>	
 	</div>
 );
 }
