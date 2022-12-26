@@ -162,7 +162,7 @@ function TakeInput(props){
 return(
 <div style={styles}>
 
-<p>test for TakeInput</p>
+<p>Please remember that this is still in beta...all the results may not be accurate</p>
 <h2 style={margin}>Max length: {props.max} Min length: {props.min}</h2>
 
 
