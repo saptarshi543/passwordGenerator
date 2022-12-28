@@ -1,53 +1,74 @@
 import React from "react";
+// function Driver(){
+	
+
+// 	ValidateFinalArray();
+// }
+
+
 function copy(){
 	//window.alert("Copied!!");
-  navigator.clipboard.writeText(suggestion);
+  navigator.clipboard.writeText(suggestion.toString());
 }
-	var final_length=0;//working...
-	var suggestion="";
+	// var final_length=0;//working...
+	// var suggestion="";
 	var number=['1','2','3','4','5','6','7','8','9','0'];
 	var special_char=['!','@','#','$','%','&','*'];
 	var letter=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 	var alpha=['A','B', 'C','D','E','F','G','H','I','J','K','L','M','N', 'O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-	var final_data=[];
+	// var final_data=[];
 
-function validateFinalArray(max, min,numObj, specialObj, lettersObj, alphabetsObj){
-	var i;
+function ValidateFinalArray(max, min,numObj, specialObj, lettersObj, alphabetsObj){
+    const [final_length ,setFinal]=React.useState(0);
+	const [suggestion, setSuggestion]=React.useState("");
+	const [numbersUser, setNumbersuser]=React.useState(false);
+	const [specialUser, setSpecialuser]=React.useState(false);
+	const [lettersUser, setLettersuser]=React.useState(false);
+	const [alphabetsUser, setAlphabetsuser]=React.useState(false);
+	const [final_data, setData]=React.useState([]);
+
+	setNumbersuser(Boolean(numObj));
+	setSpecialuser(Boolean(specialObj));
+	setLettersuser(Boolean(lettersObj));
+	setAlphabetsuser(Boolean(alphabetsObj));
 
 
-	if (max===min) {final_length=max;}
+//setSuggestion("hello World");
+	if (max===min) {setFinal(max);}
 	else{
-	 final_length=random(max, min);}
-	//console.log("test for len:"+final_length);
+	 setFinal(random(max, min));}
+
+	console.log("test for len:"+final_length+"\npass: "+suggestion);
 	
-	let numbersUser=Boolean(numObj);
-	let specialUser=Boolean(specialObj);
-	let lettersUser=Boolean(lettersObj);
-	let alphabetsUser=Boolean(alphabetsObj);
+	
 	//value converted from type object to bool value
 
-
+//setMyArray(oldArray => [...oldArray, newElement]);
 
 	//adding selection to final_data array
 	if(numbersUser===true){
 		console.log("num");
-	for( i=0; i< number.length; i++){
-		final_data.push(number[i]);
+	for(let i=0; i< number.length; i++){
+		// final_data.push(number[i]);
+		setData(arr => [...arr, number[i]]);
 		}
 	}
 	if(specialUser===true){
-	for(i=0; i< special_char.length; i++){
-		final_data.push(special_char[i]);
+	for(let i=0; i< special_char.length; i++){
+		// final_data.push(special_char[i]);
+		setData(arr => [...arr, special_char[i]]);
 		}
 	}
 	if(lettersUser===true){
-	for(i=0; i< letter.length; i++){
-		final_data.push(letter[i]);
+	for(let i=0; i< letter.length; i++){
+		// final_data.push(letter[i]);
+		setData(arr => [...arr, letter[i]]);
 		}
 	}
 	if(alphabetsUser===true){
-	for(i=0; i< alpha.length; i++){
-		final_data.push(alpha[i]);
+	for(let i=0; i< alpha.length; i++){
+		// final_data.push(alpha[i]);
+		setData(arr => [...arr, alpha[i]]);
 		}
 	}
 
@@ -55,7 +76,7 @@ function validateFinalArray(max, min,numObj, specialObj, lettersObj, alphabetsOb
 	//passing...
 	var forCheck=makePswd(final_data, final_length);
 	//console.log(forCheck);
-	suggestion=forCheck;
+	setSuggestion(forCheck);
 
 
 	// while(true){//checking if password is according to user's choice..
@@ -70,6 +91,7 @@ function validateFinalArray(max, min,numObj, specialObj, lettersObj, alphabetsOb
 	// }
 	//var t=checkPswd(forCheck, numbersUser, specialUser, lettersUser, alphabetsUser);
 //console.log("check> "+t);
+	copy();
 }
 
 //function checkPswd(pass, num, spc, letters, alphaBool){//working...
@@ -167,14 +189,16 @@ return(
 
 
 <div style={margin}>
+	<h2>Length of password: {(final_length).toString()}</h2>
+	<br></br>
 	<h2> Including Numbers? {props.num.toString()}</h2>
 	<h2> Including Special Characters? {props.spc_char.toString()}</h2>
 	<h2> Including Letters? {props.letters.toString()}</h2>
 	<h2> Including Alphabets? {props.alphabets.toString()}</h2>
-<button style={hide} type="button" onChange={validateFinalArray(props.max, props.min, props.num, props.spc_char, props.letters, props.alphabets)}></button>
+<button style={hide} type="button" onChange={ValidateFinalArray(props.max, props.min, props.num, props.spc_char, props.letters, props.alphabets)}></button>
 
 	<h2 style={suggest}>Suggestion: **{suggestion.toString()}** </h2>
-	<button style={hide} type="button" onChange={ copy() }></button>
+	 { /* <button style={hide} type="button" onChange={ copy() }></button> */}
 
 	<h2 style={suggest}>Suggestion is already copied to your clipboard!!</h2>
 </div>	
