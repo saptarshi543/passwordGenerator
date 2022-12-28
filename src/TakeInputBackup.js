@@ -5,7 +5,9 @@ import React from "react";
 	const [password, setPassword]=React.useState("");
 	const [pass_length, setLength]=React.useState(0);
 	const [data, setData]=React.useState([]);
-	setLength(9);
+	var tmp=ValidateLength(max,min);
+	console.log(max+" "+min+" "+tmp);
+	// setLength(tmp);
 	
 
 	// console.log("test for length> "+pass_length);
@@ -17,7 +19,7 @@ import React from "react";
 	const [alphaUser, setAlpha]=React.useState(Boolean(alphabetsObj));
 
 	fillData(numUser, specialUser, letterUser, alphaUser, data);
-console.log("dsdn");
+// console.log("dsdn");
 }
 
 function copy(tocopy){
@@ -52,15 +54,16 @@ function makePswd(data, len){
 
 function ValidateLength(max, min){
 //setting length of password
-	const [len, setLen]=React.useState(0);
+	let len=0;
 	if(min>max){
 		window.alert("Please provide correct lengths");
 	}
 	if(max===min){
-		setLen(max);
+		len=max;
 	}else{
-		setLen(random(max,min));
+		len=random(max,min);
 	}
+	console.log("len is "+len+typeof(len));
 return len;
 	// console.log("test");
 }
