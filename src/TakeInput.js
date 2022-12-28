@@ -76,7 +76,7 @@ function ValidateFinalArray(max, min,numObj, specialObj, lettersObj, alphabetsOb
 	//passing...
 	var forCheck=makePswd(final_data, final_length);
 	//console.log(forCheck);
-	setSuggestion(forCheck);
+	suggestion=forCheck;
 
 
 	// while(true){//checking if password is according to user's choice..
@@ -94,24 +94,24 @@ function ValidateFinalArray(max, min,numObj, specialObj, lettersObj, alphabetsOb
 	copy();
 }
 
-//function checkPswd(pass, num, spc, letters, alphaBool){//working...
+function checkPswd(pass, num, spc, letters, alphaBool){//working...
 	//console.log(">>"+pass+"<<\n"+num+typeof(num));
-//	var isPresent=false;
+	var isPresent=false;
 
-//	for(var i=0; i<pass.length; i++){
+	for(var i=0; i<pass.length; i++){
 		//console.log(number+"\n"+special_char+"\n"+letter+"\n"+alpha);
-	//	var tmp=pass.charAt(i);
-	//			if(num===true && (tmp in number)){isPresent=true;}
-	//			if(spc===true && (tmp in special_char)){ isPresent=true;}
-	//			if(letters===true && (tmp in letter)){isPresent=true;}
-	//			if(alphaBool===true && (tmp in alpha)){isPresent=true;}
+		var tmp=pass.charAt(i);
+				if(num===true && (tmp in number)){isPresent=true;}
+				if(spc===true && (tmp in special_char)){ isPresent=true;}
+				if(letters===true && (tmp in letter)){isPresent=true;}
+				if(alphaBool===true && (tmp in alpha)){isPresent=true;}
 				
 		
-//	}
+	}
 	//console.log(pass+" "+((isPresent)? "OK": "NOt oK"));
 
-//	return isPresent;
-//}
+	return isPresent;
+}
 
 
 
