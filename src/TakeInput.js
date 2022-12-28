@@ -89,7 +89,7 @@ function ValidateFinalArray(max, min,numObj, specialObj, lettersObj, alphabetsOb
 	// 		forCheck=makePswd(final_data, final_length);
 	// 	}
 	// }
-	//var t=checkPswd(forCheck, numbersUser, specialUser, lettersUser, alphabetsUser);
+	var t=checkPswd(forCheck, numbersUser, specialUser, lettersUser, alphabetsUser);
 //console.log("check> "+t);
 	copy();
 }
