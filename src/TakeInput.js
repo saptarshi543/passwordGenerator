@@ -39,12 +39,64 @@ function random( max,min){//this function is working...
 	min=Math.ceil(min);max=Math.floor(max);
 	return Math.floor(Math.random()*(max-min)+min);
 	}
+function Check(){
+//checks pswd if it contains the stuff the user wants
+	let flag=false;
+// console.log("inside Check-> "+suggestion+" "+s);
+	if(numUser===true){
+		for(let i=0;i<number.length;i++){
+			let target=number[i];
+			if (!((suggestion.indexOf(target)) === -1)){
+				flag=true;
+				console.log("num is present");
+			}
+			}
+		}
+	if(special_char===true){
+			for(let i=0;i<special_char.length;i++){
+				let target=special_char[i];
+				if (!((suggestion.indexOf(target)) === -1)){
+					flag=true;
+					console.log("special chars is present");
+				}
+			}
+		}
+	if(letterUser===true){
+			for(let i=0;i<letter.length;i++){
+			let target=letter[i];
+			if (!((suggestion.indexOf(target)) === -1)){
+				flag=true;
+				console.log("Characters is present");
+			}
+			}
+		}
+	if(alphaUser===true){
+			for(let i=0;i<alpha.length;i++){
+				let target=alpha[i];
+				if (!((suggestion.indexOf(target)) === -1)){
+					flag=true;
+					console.log("alphabets is present");
+				}
+			}
+		}
+	console.log("flag.."+flag);
+
+	}
+		
+
 
 // functions end
 
 // setLength(random(max, min));
-	pass_length=random(max,min);
-// console.log(pass_length+"gg"+numUser);
+if(min>max){
+		window.alert("Please provide correct lengths");
+	}
+	if(max===min){
+		pass_length=max;
+	}else{
+		pass_length=random(max,min);
+	}
+// console.log(pass_length);
 
 
 
@@ -66,7 +118,7 @@ if(alphaUser===true){
 
 //converting 2d array to single dimension
 let arr1d= [].concat(...arr);
-console.log("test for 1d arr: "+arr1d.length);
+// console.log("test for 1d arr: "+arr1d.length);
 
 //setting password
 
@@ -78,6 +130,8 @@ console.log("test for 1d arr: "+arr1d.length);
 	}
 	suggestion=s;
 console.log("test for pswd: "+s );
+Check();
+
 }
 
 function TakeInput(props) {
