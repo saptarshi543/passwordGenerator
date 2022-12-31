@@ -1,6 +1,7 @@
 //import React from "react"; 
 import * as React from 'react';
-import TakeInputBackup from './TakeInputBackup.js';
+// import TakeInputBackup from './TakeInputBackup.js';
+import TakeInput from './TakeInput.js';
 
 function Checkbox(){
 	const [max, setMax]=React.useState(0);
@@ -65,8 +66,11 @@ return(
 
 
 	</div>
-
+{/*
 	<TakeInputBackup max={max} min={min}  num={num} spc_char={special} letters={letters} alphabets={alphabets}/>
+	*/}
+
+	<TakeInput max={max} min={min}  num={num} spc_char={special} letters={letters} alphabets={alphabets}/>
 	</div>
 );
 }

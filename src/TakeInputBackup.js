@@ -1,15 +1,14 @@
 import React from "react";
 
 	let suggestion="";
-	function  Driver( max, min, numObj, specialObj, lettersObj, alphabetsObj) {
+function  Driver( max, min, numObj, specialObj, lettersObj, alphabetsObj) {
 	const [password, setPassword]=React.useState("");
 	const [pass_length, setLength]=React.useState(0);
 	const [data, setData]=React.useState([]);
 	var tmp=ValidateLength(max,min);
-	console.log(max+" "+min+" "+tmp);
+	// console.log(max+" "+min+" "+tmp);
 	// setLength(tmp);
 	
-
 	// console.log("test for length> "+pass_length);
 
 	const [numUser, setNum]=React.useState(Boolean(numObj));
@@ -17,9 +16,12 @@ import React from "react";
 	const [letterUser, setLetters]=React.useState(Boolean(lettersObj));
 	suggestion=password;
 	const [alphaUser, setAlpha]=React.useState(Boolean(alphabetsObj));
+	let tmpArr=[];
+	tmpArr=fillData(numUser, specialUser, letterUser, alphaUser, data);
+	// setData();
 
-	fillData(numUser, specialUser, letterUser, alphaUser, data);
-// console.log("dsdn");
+	
+console.log("dsdn");
 }
 
 function copy(tocopy){
@@ -30,14 +32,20 @@ function random( max,min){//this function is working...
 	min=Math.ceil(min);max=Math.floor(max);
 	return Math.floor(Math.random()*(max-min)+min);
 	}
-function fillData(N, S, L, A, data){
-	// var number=['1','2','3','4','5','6','7','8','9','0'];
-	// var special_char=['!','@','#','$','%','&','*'];
-	// var letter=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-	// var alpha=['A','B', 'C','D','E','F','G','H','I','J','K','L','M','N', 'O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-console.log(typeof(N));
-// if(N==true)
+function fillData(N, S, L, A){
+	let arr=[];
+	var number=['1','2','3','4','5','6','7','8','9','0'];
+	var special_char=['!','@','#','$','%','&','*'];
+	var letter=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+	var alpha=['A','B', 'C','D','E','F','G','H','I','J','K','L','M','N', 'O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+console.log(typeof(N)+N);
+	if(N===true){
+		// arr.push(number);
+		console.log("test for data: "+arr);
+	}
+	console.log("end of fillData");
 
+return arr;
 }
 function makePswd(data, len){
 	//console.log("from makePsw");
