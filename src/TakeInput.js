@@ -42,24 +42,25 @@ function random( max,min){//this function is working...
 function Check(){
 //checks pswd if it contains the stuff the user wants
 	let flag=false;
-// console.log("inside Check-> "+suggestion+" "+s);
+
+console.log("inside Check-> "+suggestion);
+// num spc letter alpha
+console.log(numUser+" "+specialUser+" "+letterUser+" "+alphaUser);
 	if(numUser===true){
 		for(let i=0;i<number.length;i++){
 			let target=number[i];
 			if (!((suggestion.indexOf(target)) === -1)){
 				flag=true;
 				console.log("num is present");
+				break;
 			}
 			}
 		}
-	if(special_char===true){
-			for(let i=0;i<special_char.length;i++){
-				let target=special_char[i];
-				if (!((suggestion.indexOf(target)) === -1)){
-					flag=true;
-					console.log("special chars is present");
-				}
-			}
+	if(specialUser===true){
+		// console.log("Inside SPC");
+			let  specialChars = /[!@#$%&*]/;
+			flag=specialChars.test(suggestion);
+			console.log(flag?"SPC present": "SPC Not present");
 		}
 	if(letterUser===true){
 			for(let i=0;i<letter.length;i++){
@@ -67,6 +68,7 @@ function Check(){
 			if (!((suggestion.indexOf(target)) === -1)){
 				flag=true;
 				console.log("Characters is present");
+				break;
 			}
 			}
 		}
@@ -76,12 +78,25 @@ function Check(){
 				if (!((suggestion.indexOf(target)) === -1)){
 					flag=true;
 					console.log("alphabets is present");
+					break;
 				}
 			}
 		}
 	console.log("flag.."+flag);
 
+
 	}
+function makePswd(){
+	var s="";
+	for(var j=0; j<pass_length; j++){
+		// let tmp=random(0, arr.length-1);
+		// console.log(tmp+ " "+arr.length);
+		s+= arr1d[random(0, arr1d.length-1)].toString();
+	}
+	suggestion=s;
+	// console.log("test for pswd: "+s );
+
+}
 		
 
 
@@ -121,15 +136,8 @@ let arr1d= [].concat(...arr);
 // console.log("test for 1d arr: "+arr1d.length);
 
 //setting password
-
-	var s="";
-	for(var j=0; j<pass_length; j++){
-		// let tmp=random(0, arr.length-1);
-		// console.log(tmp+ " "+arr.length);
-		s+= arr1d[random(0, arr1d.length-1)].toString();
-	}
-	suggestion=s;
-console.log("test for pswd: "+s );
+makePswd();
+	
 Check();
 
 }
@@ -175,9 +183,11 @@ return(
 <button style={hide} type="button" onChange={Driver(props.max, props.min, props.num, props.spc_char, props.letters, props.alphabets)}></button>
 
 
-{/*	<h2 style={suggest}>Suggestion: **{suggestion.toString()}** </h2>
-	<button style={hide} type="button" onChange={ copy() }></button>
+	<h2 style={suggest}>Suggestion: **{suggestion.toString()}** </h2>
+{/*	<button style={hide} type="button" onChange={ copy() }></button>
 */}
+
+
 	<h2 style={suggest}>Suggestion is already copied to your clipboard!!</h2>
 	
 </div>	
