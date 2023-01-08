@@ -146,7 +146,6 @@ count++;
 
 
 
-console.log("Outside..."+suggestion);
 }
 
 function TakeInput(props) {
@@ -176,12 +175,17 @@ return(
 
 
 <p>Please remember that this is still in beta...all the results may not be accurate</p>
+<p>Since simple js code is used, the values are updated late sometimes. Just tick the option that you want a couple of times.</p>
 <h2 style={margin}>Max length: {props.max} Min length: {props.min}</h2>
 
 
 <div style={margin}>
-	<h2> Including Numbers? {props.num.toString()}</h2>
 
+<h2 style={suggest}>Suggestion: **{suggestion.toString()}** </h2>
+<h2 style={suggest}>Suggestion length: {(suggestion.length).toString()}</h2>
+<br></br>
+
+	<h2> Including Numbers? {props.num.toString()}</h2>
 	<h2> Including Special Characters? {props.spc_char.toString()}</h2>
 	<h2> Including Letters? {props.letters.toString()}</h2>
 	<h2> Including Alphabets? {props.alphabets.toString()}</h2>
@@ -189,9 +193,7 @@ return(
 <button style={hide} type="button" onChange={Driver(props.max, props.min, props.num, props.spc_char, props.letters, props.alphabets)}></button>
 
 
-	<h2 style={suggest}>Suggestion: **{suggestion.toString()}** </h2>
-	<h2 style={suggest}>Suggestion length: {(suggestion.length).toString()}</h2>
-
+	
 
 
 	<h2 style={suggest}>Suggestion is already copied to your clipboard!!</h2>
