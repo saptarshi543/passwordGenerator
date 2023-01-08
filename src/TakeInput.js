@@ -1,12 +1,8 @@
 import React from "react";
 
-//global varibales required for them to br accessed in return 
-//in TakeInput function
 let suggestion="";
 
 function Driver( max, min, numObj, specialObj, lettersObj, alphabetsObj){
-	const [password, setPassword]=React.useState("");
-	// const [pass_length, setLength]=React.useState(0);
 	let pass_length=0;
 	let arr=[];
 	let numUser=Boolean(numObj);
@@ -22,13 +18,7 @@ function Driver( max, min, numObj, specialObj, lettersObj, alphabetsObj){
 
 
 
-	// const [data, setData]=React.useState([]);
 	
-	// const [numUser, setNum]=React.useState(Boolean(numObj));
-	// const [specialUser, setSpecial]=React.useState(Boolean(specialObj));
-	// const [letterUser, setLetters]=React.useState(Boolean(lettersObj));
-	// const [alphaUser, setAlpha]=React.useState(Boolean(alphabetsObj));
-
 //helping functions
 
 function copy(tocopy){
@@ -41,36 +31,29 @@ function random( max,min){//this function is working...
 	}
 function Check(test){
 //checks pswd if it contains the stuff the user wants
-	// let flag=true;
+
 	let num_is_in_pswd=false, spc_is_in_pswd=false,letter_is_in_pswd=false,alphabets_is_in_pswd=false;
 
 
 
-// console.log("inside Check-> "+suggestion);
-// num spc letter alpha
-// console.log(numUser+" "+specialUser+" "+letterUser+" "+alphaUser);
-	if(numUser===true){
+if(numUser===true){
 		for(let i=0;i<number.length;i++){
 			let target=number[i];
 			if (!((test.indexOf(target)) === -1)){
 				num_is_in_pswd=true;
-				// console.log("num is present");
 				break;
 			}
 			}
 		}
 	if(specialUser===true){
-		// console.log("Inside SPC");
 			let  specialChars = /[!@#$%&*]/;
 			spc_is_in_pswd=specialChars.test(test);
-			// console.log(spc_is_in_pswd?"spc_is_in_pswd":"No spc chars");
 		}
 	if(letterUser===true){
 			for(let i=0;i<letter.length;i++){
 			let target=letter[i];
 			if (!((test.indexOf(target)) === -1)){
 				letter_is_in_pswd=true;
-				// console.log("Characters is present");
 				break;
 			}
 			}
@@ -80,12 +63,10 @@ function Check(test){
 				let target=alpha[i];
 				if (!((test.indexOf(target)) === -1)){
 					alphabets_is_in_pswd=true;
-					// console.log("alphabets is present");
 					break;
 				}
 			}
 		}
-	// console.log("results.. "+num_is_in_pswd+" "+spc_is_in_pswd+" "+letter_is_in_pswd+" "+alphabets_is_in_pswd );
 if(numUser===true){
 	if(num_is_in_pswd===false)
 		return false;
@@ -102,19 +83,15 @@ if(alphaUser===true){
 	if(alphabets_is_in_pswd===false)
 		return false;
 }
-// console.log("flag.."+flag);
 return true;
 
 	}
 function makePswd(){
 	var s="";
 	for(var j=0; j<pass_length; j++){
-		// let tmp=random(0, arr.length-1);
-		// console.log(tmp+ " "+arr.length);
-		s+= arr1d[random(0, arr1d.length-1)].toString();
+		s+= (arr1d[random(0, arr1d.length-1)]).toString();
 	}
 	return s;
-	// console.log("test for pswd: "+s );
 
 }
 		
@@ -122,7 +99,6 @@ function makePswd(){
 
 // functions end
 
-// setLength(random(max, min));
 if(min>max){
 		window.alert("Please provide correct lengths");
 	}
@@ -131,7 +107,6 @@ if(min>max){
 	}else{
 		pass_length=random(max,min);
 	}
-// console.log(pass_length);
 
 
 
@@ -149,22 +124,18 @@ if(alphaUser===true){
 	arr.push(alpha);
 }
 
-// console.log("test for arr: "+arr+"\n"+arr.length);
 
 //converting 2d array to single dimension
 let arr1d= [].concat(...arr);
-// console.log("test for 1d arr: "+arr1d.length);
 
 //setting password
 
 var count=0;
-while((max!=0)&&(min!=0)&&(count<50)){
+while((max!==0)&&(min!==0)&&(count<50)){
 var check;
 check=makePswd();
-// console.log(check+" "+Check(check));
 
 if(Check(check)){
-	console.log("inside and");
 	suggestion=check;
 	copy(suggestion);
 	break;
@@ -172,14 +143,10 @@ if(Check(check)){
 count++;
 }
 
-// for(let i =0;i<5;i++){
-// 	var check=makePswd();
-// 	console.log(check+" "+Check(check));
-	
-// }
 
 
-console.log("Outside...");
+
+console.log("Outside..."+suggestion);
 }
 
 function TakeInput(props) {
@@ -215,7 +182,6 @@ return(
 <div style={margin}>
 	<h2> Including Numbers? {props.num.toString()}</h2>
 
-	{/* <h2>Length of password:{pass_length.toString()}</h2> */}
 	<h2> Including Special Characters? {props.spc_char.toString()}</h2>
 	<h2> Including Letters? {props.letters.toString()}</h2>
 	<h2> Including Alphabets? {props.alphabets.toString()}</h2>
@@ -225,8 +191,7 @@ return(
 
 	<h2 style={suggest}>Suggestion: **{suggestion.toString()}** </h2>
 	<h2 style={suggest}>Suggestion length: {(suggestion.length).toString()}</h2>
-{/*	<button style={hide} type="button" onChange={ copy() }></button>
-*/}
+
 
 
 	<h2 style={suggest}>Suggestion is already copied to your clipboard!!</h2>
