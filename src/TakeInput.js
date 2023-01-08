@@ -41,7 +41,10 @@ function random( max,min){//this function is working...
 	}
 function Check(){
 //checks pswd if it contains the stuff the user wants
-	let flag=false;
+	let flag=true;
+	let num_is_in_pswd=false, spc_is_in_pswd=false,letter_is_in_pswd=false,alphabets_is_in_pswd=false;
+
+
 
 console.log("inside Check-> "+suggestion);
 // num spc letter alpha
@@ -50,7 +53,7 @@ console.log(numUser+" "+specialUser+" "+letterUser+" "+alphaUser);
 		for(let i=0;i<number.length;i++){
 			let target=number[i];
 			if (!((suggestion.indexOf(target)) === -1)){
-				flag=true;
+				num_is_in_pswd=true;
 				console.log("num is present");
 				break;
 			}
@@ -59,14 +62,14 @@ console.log(numUser+" "+specialUser+" "+letterUser+" "+alphaUser);
 	if(specialUser===true){
 		// console.log("Inside SPC");
 			let  specialChars = /[!@#$%&*]/;
-			flag=specialChars.test(suggestion);
-			console.log(flag?"SPC present": "SPC Not present");
+			spc_is_in_pswd=specialChars.test(suggestion);
+			console.log(spc_is_in_pswd?"spc_is_in_pswd":"No spc chars");
 		}
 	if(letterUser===true){
 			for(let i=0;i<letter.length;i++){
 			let target=letter[i];
 			if (!((suggestion.indexOf(target)) === -1)){
-				flag=true;
+				letter_is_in_pswd=true;
 				console.log("Characters is present");
 				break;
 			}
@@ -76,14 +79,30 @@ console.log(numUser+" "+specialUser+" "+letterUser+" "+alphaUser);
 			for(let i=0;i<alpha.length;i++){
 				let target=alpha[i];
 				if (!((suggestion.indexOf(target)) === -1)){
-					flag=true;
+					alphabets_is_in_pswd=true;
 					console.log("alphabets is present");
 					break;
 				}
 			}
 		}
-	console.log("flag.."+flag);
-
+	console.log("results.. "+num_is_in_pswd+" "+spc_is_in_pswd+" "+letter_is_in_pswd+" "+alphabets_is_in_pswd );
+if(numUser===true){
+	if(num_is_in_pswd===false)
+		flag=false;
+}
+if(specialUser===true){
+	if(spc_is_in_pswd===false)
+		flag=false;
+}
+if(letterUser===true){
+	if(letter_is_in_pswd===false)
+		flag=false;
+}
+if(alphaUser===true){
+	if(alphabets_is_in_pswd===false)
+		flag=false;
+}
+console.log("flag.."+flag);
 
 	}
 function makePswd(){
