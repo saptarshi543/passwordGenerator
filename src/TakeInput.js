@@ -39,22 +39,22 @@ function random( max,min){//this function is working...
 	min=Math.ceil(min);max=Math.floor(max);
 	return Math.floor(Math.random()*(max-min)+min);
 	}
-function Check(){
+function Check(test){
 //checks pswd if it contains the stuff the user wants
-	let flag=true;
+	// let flag=true;
 	let num_is_in_pswd=false, spc_is_in_pswd=false,letter_is_in_pswd=false,alphabets_is_in_pswd=false;
 
 
 
-console.log("inside Check-> "+suggestion);
+// console.log("inside Check-> "+suggestion);
 // num spc letter alpha
-console.log(numUser+" "+specialUser+" "+letterUser+" "+alphaUser);
+// console.log(numUser+" "+specialUser+" "+letterUser+" "+alphaUser);
 	if(numUser===true){
 		for(let i=0;i<number.length;i++){
 			let target=number[i];
-			if (!((suggestion.indexOf(target)) === -1)){
+			if (!((test.indexOf(target)) === -1)){
 				num_is_in_pswd=true;
-				console.log("num is present");
+				// console.log("num is present");
 				break;
 			}
 			}
@@ -62,15 +62,15 @@ console.log(numUser+" "+specialUser+" "+letterUser+" "+alphaUser);
 	if(specialUser===true){
 		// console.log("Inside SPC");
 			let  specialChars = /[!@#$%&*]/;
-			spc_is_in_pswd=specialChars.test(suggestion);
-			console.log(spc_is_in_pswd?"spc_is_in_pswd":"No spc chars");
+			spc_is_in_pswd=specialChars.test(test);
+			// console.log(spc_is_in_pswd?"spc_is_in_pswd":"No spc chars");
 		}
 	if(letterUser===true){
 			for(let i=0;i<letter.length;i++){
 			let target=letter[i];
-			if (!((suggestion.indexOf(target)) === -1)){
+			if (!((test.indexOf(target)) === -1)){
 				letter_is_in_pswd=true;
-				console.log("Characters is present");
+				// console.log("Characters is present");
 				break;
 			}
 			}
@@ -78,31 +78,32 @@ console.log(numUser+" "+specialUser+" "+letterUser+" "+alphaUser);
 	if(alphaUser===true){
 			for(let i=0;i<alpha.length;i++){
 				let target=alpha[i];
-				if (!((suggestion.indexOf(target)) === -1)){
+				if (!((test.indexOf(target)) === -1)){
 					alphabets_is_in_pswd=true;
-					console.log("alphabets is present");
+					// console.log("alphabets is present");
 					break;
 				}
 			}
 		}
-	console.log("results.. "+num_is_in_pswd+" "+spc_is_in_pswd+" "+letter_is_in_pswd+" "+alphabets_is_in_pswd );
+	// console.log("results.. "+num_is_in_pswd+" "+spc_is_in_pswd+" "+letter_is_in_pswd+" "+alphabets_is_in_pswd );
 if(numUser===true){
 	if(num_is_in_pswd===false)
-		flag=false;
+		return false;
 }
 if(specialUser===true){
 	if(spc_is_in_pswd===false)
-		flag=false;
+		return false;
 }
 if(letterUser===true){
 	if(letter_is_in_pswd===false)
-		flag=false;
+		return false;
 }
 if(alphaUser===true){
 	if(alphabets_is_in_pswd===false)
-		flag=false;
+		return false;
 }
-console.log("flag.."+flag);
+// console.log("flag.."+flag);
+return true;
 
 	}
 function makePswd(){
@@ -112,7 +113,7 @@ function makePswd(){
 		// console.log(tmp+ " "+arr.length);
 		s+= arr1d[random(0, arr1d.length-1)].toString();
 	}
-	suggestion=s;
+	return s;
 	// console.log("test for pswd: "+s );
 
 }
@@ -155,10 +156,30 @@ let arr1d= [].concat(...arr);
 // console.log("test for 1d arr: "+arr1d.length);
 
 //setting password
-makePswd();
-	
-Check();
 
+var count=0;
+while((max!=0)&&(min!=0)&&(count<50)){
+var check;
+check=makePswd();
+// console.log(check+" "+Check(check));
+
+if(Check(check)){
+	console.log("inside and");
+	suggestion=check;
+	copy(suggestion);
+	break;
+}
+count++;
+}
+
+// for(let i =0;i<5;i++){
+// 	var check=makePswd();
+// 	console.log(check+" "+Check(check));
+	
+// }
+
+
+console.log("Outside...");
 }
 
 function TakeInput(props) {
@@ -203,6 +224,7 @@ return(
 
 
 	<h2 style={suggest}>Suggestion: **{suggestion.toString()}** </h2>
+	<h2 style={suggest}>Suggestion length: {(suggestion.length).toString()}</h2>
 {/*	<button style={hide} type="button" onChange={ copy() }></button>
 */}
 
