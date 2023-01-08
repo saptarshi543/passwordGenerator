@@ -131,8 +131,9 @@ let arr1d= [].concat(...arr);
 //setting password
 
 var count=0;
-while((max!==0)&&(min!==0)&&(count<50)){
 var check;
+while((max!==0)&&(min!==0)&&(count<500)){
+
 check=makePswd();
 
 if(Check(check)){
