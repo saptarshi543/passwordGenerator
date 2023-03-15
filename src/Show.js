@@ -29,7 +29,7 @@ const input={
 	const [letters, setLetters]=React.useState(false);
 	const [alphabets, setAlphabets]=React.useState(false);
 	
-	const [data,setData]=React.useState([]);
+	let data=[];
 	const [password,setPassword]=React.useState("");
 //variables ends.........
 
@@ -38,6 +38,16 @@ const input={
 function random( max,min){//this function is working...
 	min=Math.ceil(min);max=Math.floor(max);
 	return Math.floor(Math.random()*(max-min)+min);
+}
+
+function add(to_be_added){
+console.log("from add\n"+to_be_added)
+
+for(let i=0;i<to_be_added.length;i++){
+data.push(to_be_added[i]);
+}
+
+// console.log(data)
 }
 //functions ends....
 
@@ -61,19 +71,26 @@ function random( max,min){//this function is working...
 //handling array
 
 			//resetting array
-			setData([]);
+			data=[];
 
 			if(num===true){
-			setData(number);
-				// data.push(number);
+			
+				add(number);
 			}
 			if(special===true){
-				// data.push(special);
-			setData(special);
+				add(special_char);
 			}
-			if(letters===true){data.push(letter);}
-			if(alphabets===true){data.push(alpha);}
+			if(letters===true){
+				add(letter);
+			}
+			if(alphabets===true){
+				add(alpha);
+			}
 
+
+		
+			
+			// console.log(typeof(data));
 			for(let i=0;i<data.length;i++){
 			console.log(data[i]);
 			}
