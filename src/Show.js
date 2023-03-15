@@ -30,30 +30,102 @@ const input={
 	const [alphabets, setAlphabets]=React.useState(false);
 	
 	let data=[];
+
+	let pass="";
 	const [password,setPassword]=React.useState("");
 //variables ends.........
 
 
 //functions.....
-function random( max,min){//this function is working...
-	min=Math.ceil(min);max=Math.floor(max);
-	return Math.floor(Math.random()*(max-min)+min);
-}
 
-function add(to_be_added){
-console.log("from add\n"+to_be_added)
+	function random( max,min){//this function is working...
+		min=Math.ceil(min);max=Math.floor(max);
+		return Math.floor(Math.random()*(max-min)+min);
+	}
 
-for(let i=0;i<to_be_added.length;i++){
-data.push(to_be_added[i]);
-}
+	function makepass(){//....working....
+		pass=""
+		for(let i=0;i<passlen;i++){
+			pass+= data[random(0,data.length-1)].toString()
+		}
+		console.log("from makepass..\n"+pass);
+		return pass;
+	}
 
-// console.log(data)
-}
+	function add(to_be_added){//.......working....
+
+		for(let i=0;i<to_be_added.length;i++){
+		data.push(to_be_added[i]);
+		}
+
+	// console.log(data)
+	}
+
+	function check(test){
+	//checks pswd if it contains the stuff the user wants
+
+		let num_is_in_pswd=false, spc_is_in_pswd=false,letter_is_in_pswd=false,alphabets_is_in_pswd=false;
+
+
+
+		if(num===true){
+			for(let i=0;i<number.length;i++){
+				let target=number[i];
+				if (!((test.indexOf(target)) === -1)){
+					num_is_in_pswd=true;
+					break;
+				}
+			}
+		}
+		if(special===true){
+			let  specialChars = /[!@#$%&*]/;
+			spc_is_in_pswd=specialChars.test(test);
+		}
+		if(letters===true){
+			for(let i=0;i<letter.length;i++){
+				let target=letter[i];
+				if (!((test.indexOf(target)) === -1)){
+					letter_is_in_pswd=true;
+					break;
+				}
+			}
+		}
+		if(alphabets===true){
+			for(let i=0;i<alpha.length;i++){
+				let target=alpha[i];
+				if (!((test.indexOf(target)) === -1)){
+					alphabets_is_in_pswd=true;
+					break;
+				}
+			}
+		}
+
+
+
+		if(num===true){
+			if(num_is_in_pswd===false)
+				return false;
+		}
+		if(special===true){
+			if(spc_is_in_pswd===false)
+				return false;
+		}
+		if(letters===true){
+			if(letter_is_in_pswd===false)
+				return false;
+		}
+		if(alphabets===true){
+			if(alphabets_is_in_pswd===false)
+				return false;
+		}
+		return true;
+
+		}
 //functions ends....
 
 
 	const spit=()=>{
-			console.log("spitting to console...");
+			// console.log("spitting to console...");
 			
 
 //password length ...
@@ -64,7 +136,7 @@ data.push(to_be_added[i]);
 			}else{
 			setPasslen(random(max,min));
 			}
-			console.log("password length "+passlen);
+			// console.log("password length "+passlen);
 //password length handled.....
 
 
@@ -90,11 +162,47 @@ data.push(to_be_added[i]);
 
 		
 			
-			// console.log(typeof(data));
-			for(let i=0;i<data.length;i++){
-			console.log(data[i]);
-			}
+			// for(let i=0;i<data.length;i++){
+			// console.log(data[i]);
+			// }
+
 //array handling ends..
+
+
+
+
+
+
+
+
+//driver code........
+
+	for(let i=0;i<5000;i++){
+		let tmp_pass=makepass();
+		console.log(tmp_pass);
+		if(check(tmp_pass)){
+			setPassword(tmp_pass);
+			console.log(tmp_pass+"\nbreaking...")
+			break;
+		}
+	}
+
+
+
+//driver code ends......
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }//end of spit function...DO NOT TOUCH
