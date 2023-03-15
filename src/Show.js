@@ -38,6 +38,12 @@ const input={
 
 //functions.....
 
+	function copy_to_clipboard(){
+		navigator.clipboard.writeText(password);
+		alert("copied");
+	}
+
+
 	function random( max,min){//this function is working...
 		min=Math.ceil(min);max=Math.floor(max);
 		return Math.floor(Math.random()*(max-min)+min);
@@ -48,7 +54,7 @@ const input={
 		for(let i=0;i<passlen;i++){
 			pass+= data[random(0,data.length-1)].toString()
 		}
-		console.log("from makepass..\n"+pass);
+		// console.log("from makepass..\n"+pass);
 		return pass;
 	}
 
@@ -179,10 +185,10 @@ const input={
 
 	for(let i=0;i<5000;i++){
 		let tmp_pass=makepass();
-		console.log(tmp_pass);
+		// console.log(tmp_pass);
 		if(check(tmp_pass)){
 			setPassword(tmp_pass);
-			console.log(tmp_pass+"\nbreaking...")
+			// console.log(tmp_pass+"\nbreaking...")
 			break;
 		}
 	}
@@ -214,7 +220,8 @@ const input={
 	return(
 		<div>
 <p></p>
-
+<br></br>
+<br></br>
 <div style={input}>
 
 	<label>
@@ -252,10 +259,14 @@ const input={
 	<button onClick={spit}>Generate Password</button>
 
 	<p>Suggestion: {password.toString()}</p>
+<br></br>
+	<button onClick={copy_to_clipboard}>Copy</button>
 
+<br></br>
+<p>If the program does not respond the first time, Please press the button a couple of times.
+I am working on the problem and it should be fixed in a couple of days.</p>
 
-
-
+<br></br>
 
 
 	
