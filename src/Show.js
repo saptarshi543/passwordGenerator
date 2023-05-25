@@ -140,7 +140,7 @@ const input={
 			}else if(max===min){
 				setPasslen(max);
 			}else{
-			setPasslen(random(max,min));
+			setPasslen(random(max+1,min));
 			}
 			// console.log("password length "+passlen);
 //password length handled.....
